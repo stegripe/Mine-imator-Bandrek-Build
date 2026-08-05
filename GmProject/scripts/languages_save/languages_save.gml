@@ -2,7 +2,7 @@
 
 function languages_save()
 {
-	log("Saving languages", languages_file)
+	log_info("ui", "Saving languages", languages_file)
 	
 	json_save_start(languages_file)
 	json_save_object_start()

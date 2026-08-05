@@ -20,7 +20,7 @@ function play_audio_from_files(file_directory_l, volume = 0.8)
 	buffer_seek(sound_buffer, 0, 0)
 	
 	if (sound_index <= 0)
-		log_message("Audio file error or missing while loading: " + string(file_directory_l))
+		log_error("audio", "Audio file error or missing while loading", file_directory_l)
 	
 	audio_play_sound(sound_index, 0, false)
 	audio_sound_gain(sound_index, volume, 0)

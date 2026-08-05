@@ -31,7 +31,7 @@ function json_load()
 	
 	if (json_error != "")
 	{
-		log("JSON ERROR: " + json_error + " on line " + string(json_line) + ", column " + string(json_column))
+		log_error("file", "JSON ERROR: " + json_error + " on line " + string(json_line) + ", column " + string(json_column))
 		return undefined
 	}
 	

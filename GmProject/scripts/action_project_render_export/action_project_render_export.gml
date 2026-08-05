@@ -13,6 +13,6 @@ function action_project_render_export(fn = "")
 	project_save_render()
 	project_save_done()
 	
-	log("Saved render settings", fn)
+	log_info("render", "Saved render settings", fn)
 	toast_new(e_toast.POSITIVE, text_get("alertrendersaved"))
 }

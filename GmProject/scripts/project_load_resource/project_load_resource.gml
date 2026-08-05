@@ -1,18 +1,25 @@
-/// project_load_resource(map)
+/// project_load_resource(map, [existing])
 /// @arg map
+/// @arg [existing] Optional live resource to soft-patch in place (coop).
 
-function project_load_resource(argument0)
+function project_load_resource(map, existing = null)
 {
-	var map = argument0;
-	
 	if (!ds_map_valid(map))
 		return 0
 	
-	with (new_obj(obj_resource))
+	var res = existing
+	var is_new = (res = null)
+	if (is_new)
+		res = new_obj(obj_resource)
+	
+	with (res)
 	{
-		loaded = true
-		load_id = value_get_string(map[?"id"], save_id)
-		save_id_map[?load_id] = load_id
+		if (is_new)
+		{
+			loaded = true
+			load_id = value_get_string(map[?"id"], save_id)
+			save_id_map[?load_id] = load_id
+		}
 		
 		var typestr = value_get_string(map[?"type"]);
 		
@@ -61,6 +68,9 @@ function project_load_resource(argument0)
 		
 		material_format = value_get_real(map[?"material_format"], material_format)
 		
-		sortlist_add(app.res_list, id)
+		if (is_new)
+			sortlist_add(app.res_list, id)
 	}
+	
+	return res
 }

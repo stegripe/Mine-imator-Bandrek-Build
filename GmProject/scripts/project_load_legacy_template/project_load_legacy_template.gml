@@ -38,7 +38,7 @@ function project_load_legacy_template()
 				project_load_template_update_model()
 			}
 			else
-				log("Could not convert model ", legacy_model_name)
+				log_warn("project.load", "Could not convert model ", legacy_model_name)
 		}
 		
 		// Find new model part name
@@ -48,7 +48,7 @@ function project_load_legacy_template()
 			if (ds_list_valid(modelpartlist) && legacy_bodypart_id < ds_list_size(modelpartlist))
 				model_part_name = modelpartlist[|legacy_bodypart_id]
 			else
-				log("Could not convert model part of ", model_name, legacy_bodypart_id)
+				log_warn("project.load", "Could not convert model part of ", model_name, legacy_bodypart_id)
 		}
 		
 		item_tex = project_load_legacy_save_id()

@@ -1,7 +1,7 @@
 # Paths
 $version = $args[0];
 $buildDir = $Env:DEV_DIR + "/Projects/Mine-imator-build";
-$outDir = ((Get-Item (Get-Location)).parent.parent.FullName) + "\Builds";
+$outDir = ((Get-Item (Get-Location)).parent.parent.FullName) + "\Build";
 $outZip = "$outDir\Mine-imator $version.zip"
 $outZip32 = "$outDir\Mine-imator $version x86.zip"
 $outInstaller = "$outDir\Mine-imator $version installer.exe"

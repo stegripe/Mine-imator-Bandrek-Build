@@ -11,7 +11,7 @@ function popup_show(argument0)
 	
 	popup = argument0
 	
-	log("Show popup", popup.name)
+	log_info("ui", "Show popup", popup.name)
 	
 	if (popup.block)
 		window_busy = "popup" + popup.name

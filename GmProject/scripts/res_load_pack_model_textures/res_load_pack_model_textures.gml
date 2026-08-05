@@ -39,7 +39,7 @@ function res_load_pack_model_textures()
 	// Create new
 	debug_timer_start()
 	
-	log("Model textures", "load")
+	log_info("res.load", "Model textures", "load")
 	model_texture_map = ds_map_create()
 	model_texture_material_map = ds_map_create()
 	model_tex_normal_map = ds_map_create()
@@ -64,7 +64,7 @@ function res_load_pack_model_textures()
 		else
 		{
 			if (dev_mode)
-				log("Model texture not found", mc_assets.model_texture_list[|t])
+				log_warn("res.load", "Model texture not found", mc_assets.model_texture_list[|t])
 			tex = texture_create_missing()
 		}
 		
@@ -97,6 +97,6 @@ function res_load_pack_model_textures()
 		model_tex_normal_map[?name] = tex
 	}
 	
-	log("Model textures", "done")
+	log_info("res.load", "Model textures", "done")
 	debug_timer_stop("Model textures")
 }

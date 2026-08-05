@@ -10,7 +10,7 @@ function action_tl_keyframes_load_file(fn, tl, insertpos, maxlen)
 	var rootmap, legacy;
 	if (string_contains(filename_ext(fn), ".miframes"))
 	{
-		log("Opening keyframes", fn)
+		log_info("project.load", "Opening keyframes", fn)
 		rootmap = project_load_start(fn)
 		if (rootmap = null)
 			return false
@@ -21,7 +21,7 @@ function action_tl_keyframes_load_file(fn, tl, insertpos, maxlen)
 	// Pre 1.1.0 (buffer)
 	else
 	{
-		log("Opening legacy keyframes", fn)
+		log_info("project.load", "Opening legacy keyframes", fn)
 		if (!project_load_legacy_start(fn))
 			return false
 		
@@ -170,7 +170,7 @@ function action_tl_keyframes_load_file(fn, tl, insertpos, maxlen)
 	// Update
 	project_load_find_save_ids()
 	
-	log("Loaded " + string(num) + " keyframes")
+	log_info("project.load", "Loaded " + string(num) + " keyframes")
 	
 	return insertpos + len
 }

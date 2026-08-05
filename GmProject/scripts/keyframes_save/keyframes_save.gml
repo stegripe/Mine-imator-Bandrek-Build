@@ -29,12 +29,12 @@ function keyframes_save()
 		return 0
 	
 	fn = filename_new_ext(fn, ".miframes")
-	log("Saving keyframes", fn)
+	log_info("project.save", "Saving keyframes", fn)
 	
 	save_folder = filename_dir(fn)
 	load_folder = project_folder
-	log("load_folder", load_folder)
-	log("save_folder", save_folder)
+	log_info("project.save", "load_folder", load_folder)
+	log_info("project.save", "save_folder", save_folder)
 	
 	project_save_start(fn, false)
 	
@@ -81,5 +81,5 @@ function keyframes_save()
 	project_save_objects()
 	project_save_done()
 	
-	log("Keyframes saved")
+	log_info("project.save", "Keyframes saved")
 }

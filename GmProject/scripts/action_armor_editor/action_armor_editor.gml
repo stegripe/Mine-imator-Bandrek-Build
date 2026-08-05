@@ -24,8 +24,9 @@ function action_armor_editor(value)
 			var hobj;
 			history_pop()
 		
-			if (history_amount > 0 && history[0].script = action_armor_editor)
-				hobj = history[0]
+			var top = history_combine_top()
+			if (top != null && top.script = action_armor_editor)
+				hobj = top
 			else
 			{
 				history_push()
@@ -38,7 +39,7 @@ function action_armor_editor(value)
 			armor[menu_armor_piece + menu_armor_piece_data] = value
 			hobj.new_armor = armor
 		
-			history[0] = hobj
+			history_set_top(hobj)
 		}
 		else
 		{

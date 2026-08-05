@@ -5,14 +5,14 @@ function minecraft_assets_reload()
 {
 	var fname = minecraft_directory + minecraft_version + ".midata";
 	
-	log("Reloading models")
+	log_info("minecraft", "Reloading models")
 	
 	var typemap, map;
 	typemap = ds_int_map_create()
 	map = json_load(fname, typemap)
 	if (!ds_map_valid(map))
 	{
-		log("Could not parse JSON", fname)
+		log_warn("minecraft", "Could not parse JSON", fname)
 		ds_map_destroy(typemap)
 		return false
 	}
@@ -29,7 +29,7 @@ function minecraft_assets_reload()
 		var characterslist = map[?"characters"];
 		if (is_undefined(characterslist))
 		{
-			log("No character list found")
+			log_warn("minecraft", "No character list found")
 			break
 		}
 		
@@ -38,7 +38,7 @@ function minecraft_assets_reload()
 			var model = model_load(characterslist[|i], load_assets_dir + mc_character_directory);
 			if (!model) // Something went wrong!
 			{
-				log("Could not load model")
+				log_warn("minecraft", "Could not load model")
 				continue
 			}
 			
@@ -51,7 +51,7 @@ function minecraft_assets_reload()
 		var specialblockslist = map[?"special_blocks"];
 		if (is_undefined(specialblockslist))
 		{
-			log("No special block list found")
+			log_warn("minecraft", "No special block list found")
 			break
 		}
 		
@@ -60,7 +60,7 @@ function minecraft_assets_reload()
 			var model = model_load(specialblockslist[|i], load_assets_dir + mc_special_block_directory);
 			if (!model) // Something went wrong!
 			{
-				log("Could not load model")
+				log_warn("minecraft", "Could not load model")
 				continue
 			}
 			

@@ -12,7 +12,7 @@ function nbt_read_tag_compound()
 		
 		if (type >= e_nbt.amount)
 		{
-			log("TAG_Compound error", "Invalid tag")
+			log_error("file", "TAG_Compound error", "Invalid tag")
 			ds_map_destroy(map)
 			return null
 		}

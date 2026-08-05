@@ -6,7 +6,7 @@ function settings_load_legacy_recent(fn)
 	if (!file_exists_lib(fn))
 		return 0
 	
-	log("Loading legacy recent files", fn)
+	log_info("app", "Loading legacy recent files", fn)
 	buffer_current = buffer_load_lib(fn)
 	
 	recent_amount = buffer_read_byte()

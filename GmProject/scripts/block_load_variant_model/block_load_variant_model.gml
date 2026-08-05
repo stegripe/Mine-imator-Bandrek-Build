@@ -5,7 +5,7 @@ function block_load_variant_model(map, type)
 {
 	if (is_undefined(map[?"model"]))
 	{
-		log("Missing parameter \"model\"")
+		log_warn("minecraft", "Missing parameter \"model\"")
 		return false
 	}
 	

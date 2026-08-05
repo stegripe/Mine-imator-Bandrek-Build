@@ -33,11 +33,11 @@ function project_load_legacy_beta(loadbackground)
 				{
 					lib_char_model_name[a] = ""
 					lib_char_model_state[a] = array()
-					log("Could not convert model name", lib_char_model_legacy_name[a])
+					log_warn("project.load", "Could not convert model name", lib_char_model_legacy_name[a])
 				}
 			}
 			else
-				log("Could not convert model ID", modelid)
+				log_warn("project.load", "Could not convert model ID", modelid)
 			
 			lib_item_type[a] = 0
 			lib_item_bounce[a] = true
@@ -129,7 +129,7 @@ function project_load_legacy_beta(loadbackground)
 					if (!is_undefined(modelpartlist))
 						tl_parts[a] = ds_list_size(modelpartlist) + 1
 					else
-						log("Could get number of parts for ", lib_char_model_legacy_name[tl_lib[a]])
+						log_info("project.load", "Could get number of parts for ", lib_char_model_legacy_name[tl_lib[a]])
 				}
 			}
 			

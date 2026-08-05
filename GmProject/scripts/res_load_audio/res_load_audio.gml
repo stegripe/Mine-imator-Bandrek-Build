@@ -32,14 +32,14 @@ function res_load_audio()
 			var ret = movie_audio_file_decode(fname, temp_file);
 			if (ret < 0)
 			{
-				log("Error loading audio", ret)
+				log_error("audio", "Error loading audio", ret)
 				error("errorloadaudio")
 				with (app)
 					load_next()
 				return 0
 			}
 			
-			log("Loading audio", fname)
+			log_info("audio", "Loading audio", fname)
 			
 			// Can't process audio with growing buffer, convert to fixed size
 			var buffertemp = buffer_load(temp_file);

@@ -47,7 +47,7 @@ function res_load_pack_particle_textures()
 	// Create new
 	debug_timer_start()
 	
-	log("Particle textures", "load")
+	log_info("res.load", "Particle textures", "load")
 	
 	// Load particle textures
 	particle_texture_map = ds_map_create()
@@ -66,7 +66,7 @@ function res_load_pack_particle_textures()
 		else
 		{
 			if (dev_mode)
-				log("Particle texture not found", mc_assets.particle_texture_list[|t])
+				log_warn("res.load", "Particle texture not found", mc_assets.particle_texture_list[|t])
 			tex = texture_create_missing()
 		}
 		
@@ -130,7 +130,7 @@ function res_load_pack_particle_textures()
 		surface_free(tempsurf)
 	}
 	
-	log("Particle textures", "legacy sheets")
+	log_info("res.load", "Particle textures", "legacy sheets")
 	
 	// Create legacy particle and explosion sheet(if they don't exist in the pack)
 	
@@ -231,6 +231,6 @@ function res_load_pack_particle_textures()
 		ds_map_destroy(particle_texture_map)
 	}
 	
-	log("Particle textures", "done")
+	log_info("res.load", "Particle textures", "done")
 	debug_timer_stop("Particle textures")
 }

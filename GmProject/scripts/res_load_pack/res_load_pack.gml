@@ -16,7 +16,7 @@ function res_load_pack()
 			{
 				if (!unzip(fname))
 				{
-					log("Error unzipping pack")
+					log_error("res.load", "Error unzipping pack")
 					error("errorunzippack")
 					with (app)
 						load_next()
@@ -90,7 +90,7 @@ function res_load_pack()
 			ready = true
 			app.history_resource_update = true
 			
-			log("Pack loaded")
+			log_info("res.load", "Pack loaded")
 			move_all_to_texture_page()
 			
 			// Update project and load next in the queue

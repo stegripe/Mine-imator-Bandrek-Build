@@ -3,7 +3,7 @@ function builder_read_schematic(map)
 {
 	if (!ds_map_valid(map))
 	{
-		log("Schematic error", "Not a schematic file")
+		log_error("builder", "Schematic error", "Not a schematic file")
 		return false
 	}
 	
@@ -14,13 +14,13 @@ function builder_read_schematic(map)
 	build_size_x = map[?"Width"]
 	build_size_y = map[?"Length"]
 	build_size_z = map[?"Height"]
-	log("Size", string(build_size_x) + " x " + string(build_size_y) + " x " + string(build_size_z))
+	log_info("builder", "Size", string(build_size_x) + " x " + string(build_size_y) + " x " + string(build_size_z))
 	
 	if (is_undefined(build_size_x) || 
 		is_undefined(build_size_y) || 
 		is_undefined(build_size_z))
 	{
-		log("Schematic error", "Size not fully defined")
+		log_error("builder", "Schematic error", "Size not fully defined")
 		return false
 	}
 	
@@ -28,7 +28,7 @@ function builder_read_schematic(map)
 		build_size_y <= 0 || 
 		build_size_z <= 0)
 	{
-		log("Schematic error", "Size cannot be 0")
+		log_error("builder", "Schematic error", "Size cannot be 0")
 		return false
 	}
 	
@@ -38,14 +38,14 @@ function builder_read_schematic(map)
 		var version = map[?"Version"];
 		if (is_undefined(version))
 		{
-			log("Schematic error", "Version not available")
+			log_error("builder", "Schematic error", "Version not available")
 			return false
 		}
 		
-		log("Version", map[?"Version"])
+		log_info("builder", "Version", map[?"Version"])
 		if (version > 1)
 		{
-			log("Schematic error", "Unsupported format, version too high")
+			log_error("builder", "Schematic error", "Unsupported format, version too high")
 			return false
 		}
 		
@@ -53,7 +53,7 @@ function builder_read_schematic(map)
 		var palettemap = map[?"Palette"]
 		if (!ds_map_valid(palettemap))
 		{
-			log("Schematic error", "Palette not found")
+			log_error("builder", "Schematic error", "Palette not found")
 			return false
 		}
 		
@@ -124,7 +124,7 @@ function builder_read_schematic(map)
 		sch_blockdata_array = map[?"BlockData"]
 		if (is_undefined(sch_blockdata_array))
 		{
-			log("Schematic error", "BlockData array not found")
+			log_error("builder", "Schematic error", "BlockData array not found")
 			return false
 		}
 		
@@ -142,14 +142,14 @@ function builder_read_schematic(map)
 		sch_legacy_blocksarray = map[?"Blocks"];
 		if (is_undefined(sch_legacy_blocksarray))
 		{
-			log("Schematic error", "Blocks array not found")
+			log_error("builder", "Schematic error", "Blocks array not found")
 			return false
 		}
 		
 		sch_legacy_dataarray = map[?"Data"];
 		if (is_undefined(sch_legacy_dataarray))
 		{
-			log("Schematic error", "Data array not found")
+			log_error("builder", "Schematic error", "Data array not found")
 			return false
 		}
 		
@@ -178,7 +178,7 @@ function builder_read_schematic_nbt(structuremap)
 				
 	if (structureversion < 2000)
 	{
-		log("Structure error", "Unsupported format, version too low")
+		log_error("builder", "Structure error", "Unsupported format, version too low")
 		return false
 	}
 				
@@ -187,13 +187,13 @@ function builder_read_schematic_nbt(structuremap)
 	mc_builder.build_size_x = sizemap[|X]
 	mc_builder.build_size_y = sizemap[|Z]
 	mc_builder.build_size_z = sizemap[|Y]
-	log("Size", [mc_builder.build_size_x, mc_builder.build_size_y, mc_builder.build_size_z])
+	log_info("builder", "Size", [mc_builder.build_size_x, mc_builder.build_size_y, mc_builder.build_size_z])
 				
 	if (mc_builder.build_size_x <= 0 || 
 		mc_builder.build_size_y <= 0 || 
 		mc_builder.build_size_z <= 0)
 	{
-		log("Structure error", "Size cannot be 0")
+		log_error("builder", "Structure error", "Size cannot be 0")
 		return false
 	}
 				
@@ -212,7 +212,7 @@ function builder_read_schematic_nbt(structuremap)
 		palettelist = structuremap[?"palette"]
 		if (!ds_list_valid(palettelist))
 		{
-			log("Structure error", "Palette not found")
+			log_error("builder", "Structure error", "Palette not found")
 			return false
 		}
 	}	
@@ -282,7 +282,7 @@ function builder_read_schematic_nbt(structuremap)
 	var blocklist = structuremap[?"blocks"]
 	if (!ds_list_valid(blocklist))
 	{
-		log("Structure error", "Block list not found")
+		log_error("builder", "Structure error", "Block list not found")
 		return false
 	}
 				
@@ -505,7 +505,7 @@ function builder_read_blocks_file()
 	build_size_y = buffer_read_short_be() // Derp
 	build_size_x = buffer_read_short_be()
 	build_size_z = buffer_read_short_be()
-	log("Size", string(build_size_x) + " x " + string(build_size_y) + " x " + string(build_size_z))
+	log_info("builder", "Size", string(build_size_x) + " x " + string(build_size_y) + " x " + string(build_size_z))
 	
 	builder_start()
 	sch_timeline_amount = 0

@@ -128,7 +128,7 @@ function export_update()
 			if (err < 0)
 			{
 				export_done_movie()
-				log("Error when adding frame, error code", err)
+				log_error("export", "Error when adding frame, error code", err)
 				error("errorexportmovie")
 				return 0
 			}
