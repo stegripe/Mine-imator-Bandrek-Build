@@ -6,19 +6,19 @@ function minecraft_assets_load_startup_version()
 {
 	var version = app.setting_minecraft_assets_version;
 	
-	log("Loading Minecraft assets version", version)
+	log_info("minecraft", "Loading Minecraft assets version", version)
 	load_assets_file = minecraft_directory + version + ".midata"
 	load_assets_zip_file = minecraft_directory + version + ".zip"
 	
 	if (!file_exists_lib(load_assets_file))
 	{
-		log("Could not find Minecraft assets file", load_assets_file)
+		log_warn("minecraft", "Could not find Minecraft assets file", load_assets_file)
 		return false
 	}
 	
 	if (!file_exists_lib(load_assets_zip_file))
 	{
-		log("Could not find Minecraft assets archive", load_assets_zip_file)
+		log_warn("minecraft", "Could not find Minecraft assets archive", load_assets_zip_file)
 		return false
 	}
 	
@@ -27,7 +27,7 @@ function minecraft_assets_load_startup_version()
 	load_assets_map = json_load(load_assets_file, load_assets_type_map)
 	if (!ds_map_valid(load_assets_map))
 	{
-		log("Could not parse JSON", load_assets_file)
+		log_warn("minecraft", "Could not parse JSON", load_assets_file)
 		ds_map_destroy(load_assets_type_map)
 		return false
 	}
@@ -39,7 +39,7 @@ function minecraft_assets_load_startup_version()
 	
 	if (format != minecraft_assets_format)
 	{
-		log("Unsupported archive, format", format)
+		log_info("minecraft", "Unsupported archive, format", format)
 		return false
 	}
 	

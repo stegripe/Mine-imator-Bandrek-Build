@@ -34,7 +34,7 @@ function res_load_pack_item_textures(type, suffix)
 	}
 	
 	// Load textures
-	log("Item textures", type, "load")
+	log_info("res.load", "Item textures", type, "load")
 	texlist = ds_list_create() // name -> texture
 	for (var t = 0; t < ds_list_size(mc_assets.item_texture_list); t++)
 	{
@@ -64,7 +64,7 @@ function res_load_pack_item_textures(type, suffix)
 		else
 		{
 			if (dev_mode)
-				log("Item texture not found", mc_assets.item_texture_list[|t] + suffix)
+				log_warn("res.load", "Item texture not found", mc_assets.item_texture_list[|t] + suffix)
 			ds_list_add(texlist, null)
 		}
 	}
@@ -77,7 +77,7 @@ function res_load_pack_item_textures(type, suffix)
 			var str = "The following item textures were unused:\n";
 			for (var i = 0; i < ds_list_size(fileslist); i++)
 				str += "  " + filename_name(fileslist[|i]) + "\n"
-			log(str)
+			log_info("res.load", str)
 		}
 		ds_list_destroy(fileslist)
 	}
@@ -86,7 +86,7 @@ function res_load_pack_item_textures(type, suffix)
 		itemsize = item_size
 	
 	// Create surface of items
-	log("Item textures", "surface")
+	log_info("res.load", "Item textures", "surface")
 	draw_texture_start()
 	surf = surface_create(minecraft_item_sheet_size[0] * itemsize, minecraft_item_sheet_size[1] * itemsize)
 	surface_set_target(surf)
@@ -144,6 +144,6 @@ function res_load_pack_item_textures(type, suffix)
 	surface_free(surf)
 	ds_list_destroy(texlist)
 	
-	log("Item textures", type, "done")
+	log_info("res.load", "Item textures", type, "done")
 	debug_timer_stop("Item textures: " + type)
 }

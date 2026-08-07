@@ -47,6 +47,6 @@ function action_project_render_import(fn = "")
 		with (hobj.save_obj_new)
 			history_copy_render_settings(app)
 		
-		log("Loaded render settings", fn)
+		log_info("render", "Loaded render settings", fn)
 	}
 }

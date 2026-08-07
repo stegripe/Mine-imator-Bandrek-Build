@@ -7,7 +7,7 @@ function languages_load()
 	if (!file_exists_lib(fn))
 		return 0
 	
-	log("Loading languages", fn)
+	log_info("ui", "Loading languages", fn)
 	
 	// Decode
 	var map = json_load(fn);
@@ -15,7 +15,7 @@ function languages_load()
 		return 0
 	
 	load_format = map[?"format"]
-	log("load_format", load_format)
+	log_info("ui", "load_format", load_format)
 	
 	var list, obj;
 	list = map[?"languages"]

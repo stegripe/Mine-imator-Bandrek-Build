@@ -13,7 +13,7 @@ function new_minecraft_map(fn)
 	
 	if (!file_exists_lib(temp_file))
 	{
-		log("GZunzip error", "gzunzip")
+		log_error("world", "GZunzip error", "gzunzip")
 		return 0
 	}
 	
@@ -26,7 +26,7 @@ function new_minecraft_map(fn)
 	
 	if (!ds_map_valid(rootmap))
 	{
-		log("Minecraft map error", "Not a map file")
+		log_error("world", "Minecraft map error", "Not a map file")
 		return 0
 	}
 	
@@ -34,14 +34,14 @@ function new_minecraft_map(fn)
 	data = data[?"data"]
 	if (is_undefined(data))
 	{
-		log("Minecraft map error", "Data not available")
+		log_error("world", "Minecraft map error", "Data not available")
 		return 0
 	}
 	
 	colors = data[?"colors"]
 	if (is_undefined(colors))
 	{
-		log("Minecraft map error", "Colors not found")
+		log_error("world", "Minecraft map error", "Colors not found")
 		return 0
 	}
 	

@@ -107,7 +107,7 @@ function window_draw_export()
 	draw_switch("exporthidepreview", framex + framew / 2 - dw / 2, framey + frameh + 80, setting_export_hide_preview, action_toolbar_export_hide_preview)
 	tab_next()
 	
-	window_set_caption(loadtext + " - Mine-imator")
+	window_set_caption(loadtext + " - Mine-imator Bandrek Build")
 	
 	// Title
 	draw_label(window_state = "export_movie" ? text_get("exportmovietitle") : text_get("exportimagetitle"), framex + framew / 2, framey - 35, fa_center, fa_bottom, c_accent, 1, font_heading_big)

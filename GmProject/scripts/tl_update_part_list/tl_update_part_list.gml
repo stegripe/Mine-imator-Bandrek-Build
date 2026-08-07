@@ -11,6 +11,8 @@ function tl_update_part_list(part, par)
 		
 		// Find timeline with name
 		var tl = tl_part_find(mpart.name);
+		if (tl = null)
+			continue
 		with (tl)
 		{
 			model_part = mpart
@@ -25,7 +27,7 @@ function tl_update_part_list(part, par)
 		}
 		
 		// Recurse for this part
-		if (tl != null && mpart.part_list != null)
+		if (mpart.part_list != null)
 			tl_update_part_list(mpart, tl)
 	}
 }

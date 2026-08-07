@@ -10,12 +10,12 @@ function particles_save()
 	
 	fn = filename_new_ext(fn, ".miparticles")
 	
-	log("Saving particles", fn)
+	log_info("project.save", "Saving particles", fn)
 	
 	save_folder = filename_dir(fn)
 	load_folder = project_folder
-	log("save_folder", save_folder)
-	log("load_folder", load_folder)
+	log_info("project.save", "save_folder", save_folder)
+	log_info("project.save", "load_folder", load_folder)
 	
 	project_save_start(fn, false)
 	
@@ -36,5 +36,5 @@ function particles_save()
 	project_save_objects()
 	project_save_done()
 	
-	log("Particles saved")
+	log_info("project.save", "Particles saved")
 }

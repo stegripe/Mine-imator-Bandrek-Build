@@ -11,7 +11,7 @@ function res_load_pack_version()
 		
 		if (!ds_map_valid(map))
 		{
-			log("Error loading pack.mcmeta")
+			log_error("res.load", "Error loading pack.mcmeta")
 			pack_format = e_minecraft_pack.LATEST
 			
 			return false

@@ -52,5 +52,5 @@ function res_load_pack_block_textures()
 			block_sheet_ani_tex_normal[f] = texture_duplicate(spr_default_normal)
 	}
 	
-	log("Block textures all", "done")
+	log_info("res.load", "Block textures all", "done")
 }

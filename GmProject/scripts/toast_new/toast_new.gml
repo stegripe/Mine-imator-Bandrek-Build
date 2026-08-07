@@ -23,7 +23,7 @@ function toast_new(variant, text)
 	toast.dismiss_time = max(2, (string_length(toast.text) * .1))
 	toast_last = toast
 	
-	log("New toast", toast.text, type)
+	log_info("ui", "New toast", toast.text, type)
 	
 	return toast
 }

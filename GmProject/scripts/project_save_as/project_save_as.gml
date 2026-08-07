@@ -14,7 +14,7 @@ function project_save_as()
 		return 0
 	}
 	
-	log("Saving project as new", dirname)
+	log_info("project.save", "Saving project as new", dirname)
 	
 	project_name = popup_saveas.tbx_name.text
 	project_author = popup_saveas.tbx_author.text

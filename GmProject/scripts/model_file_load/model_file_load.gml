@@ -7,39 +7,39 @@ function model_file_load(fname, res = null)
 {
 	if (!file_exists_lib(fname))
 	{
-		log("Could not find model file", fname)
+		log_warn("asset.load", "Could not find model file", fname)
 		return null
 	}
 	
 	var map = json_load(fname);
 	if (!ds_map_valid(map))
 	{
-		log("Could not parse model file", fname)
+		log_warn("asset.load", "Could not parse model file", fname)
 		return null
 	}
 	
 	// Check required fields
 	if (!is_string(map[?"name"]))
 	{
-		log("Missing parameter \"name\"")
+		log_warn("asset.load", "Missing parameter \"name\"")
 		return null
 	}
 	
 	if (!is_string(map[?"texture"]))
 	{
-		log("Missing parameter \"texture\"")
+		log_warn("asset.load", "Missing parameter \"texture\"")
 		return null
 	}
 	
 	if (!ds_list_valid(map[?"texture_size"]))
 	{
-		log("Missing array \"texture_size\"")
+		log_warn("asset.load", "Missing array \"texture_size\"")
 		return null
 	}
 	
 	if (!ds_list_valid(map[?"parts"]))
 	{
-		log("Missing array \"parts\"")
+		log_warn("asset.load", "Missing array \"parts\"")
 		return null
 	}
 	
@@ -49,7 +49,7 @@ function model_file_load(fname, res = null)
 		name = map[?"name"]
 		
 		if (res = null && dev_mode_debug_names && !text_exists("model" + name))
-			log("model/" + name + dev_mode_name_translation_message)
+			log_info("asset.load", "model/" + name + dev_mode_name_translation_message)
 		
 		// Description (optional)
 		description = value_get_string(map[?"description"], "")

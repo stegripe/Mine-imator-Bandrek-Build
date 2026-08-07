@@ -13,10 +13,10 @@ function legacy_startup()
 	var map = json_load(legacy_file);
 	if (!ds_map_valid(map))
 	{
-		log("Error loading legacy.midata")
+		log_error("startup", "Error loading legacy.midata")
 		return false
 	}
-	log("Loading legacy file", legacy_file)
+	log_info("startup", "Loading legacy file", legacy_file)
 	
 	// Models
 	legacy_model_id_05_map = map[?"legacy_model_id_05"]

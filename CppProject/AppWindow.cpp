@@ -8,7 +8,6 @@
 #include <QMimeData>
 #include <QScreen>
 #include <QStyle>
-#include <QTimer>
 
 namespace CppProject
 {
@@ -121,11 +120,10 @@ namespace CppProject
 		newSize.rwidth() *= App->scale;
 		newSize.rheight() *= App->scale;
 		QMainWindow::setGeometry(QStyle::alignedRect(Qt::LeftToRight, Qt::AlignCenter, newSize, qApp->primaryScreen()->geometry()));
-		QTimer::singleShot(100, [&]()
-			{
-				QMainWindow::showNormal();
-				QMainWindow::activateWindow();
-			});
+		// Show immediately so the load-assets card is visible before heavy startup work.
+		QMainWindow::showNormal();
+		QMainWindow::activateWindow();
+		QMainWindow::raise();
 
 	#if API_OPENGL
 		glWidget->widgetRender = true;
@@ -275,6 +273,9 @@ namespace CppProject
 	{
 		GFX->StartOffScreenRender();
 		window_drop(ScopeAny(global::_app->id), MimeDataToFiles(event->mimeData()));
+		event->acceptProposedAction();
+		// Ensure the next frame redraws after drag-drop import (viewport opt can freeze otherwise)
+		update();
 	}
 
 	KeyChecker::KeyChecker(QWidget* parent) : QLineEdit(parent)

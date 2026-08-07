@@ -2,7 +2,7 @@
 
 function recent_save()
 {
-	log("Updating recent list")
+	log_info("project.save", "Updating recent list")
 	
 	json_save_start(recent_file)
 	json_save_object_start()

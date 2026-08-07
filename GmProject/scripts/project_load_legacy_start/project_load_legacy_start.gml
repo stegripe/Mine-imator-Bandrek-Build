@@ -12,7 +12,7 @@ function project_load_legacy_start(argument0)
 	// Check format too new
 	if (load_format > e_project.FORMAT_CB_103) 
 	{
-		log("Invalid format", load_format)
+		log_error("project.load", "Invalid format", load_format)
 		error("errorfilecorrupted")
 		buffer_delete(buffer_current)
 		return false
@@ -21,13 +21,13 @@ function project_load_legacy_start(argument0)
 	// Check format too old
 	else if (load_format < e_project.FORMAT_05)
 	{
-		log("Too old legacy project, format", load_format)
+		log_error("project.load", "Too old legacy project, format", load_format)
 		error("errorfilecorrupted")
 		buffer_delete(buffer_current)
 		return false
 	}
 	
-	log("load_format", load_format)
+	log_info("project.load", "load_format", load_format)
 	
 	return true
 }
