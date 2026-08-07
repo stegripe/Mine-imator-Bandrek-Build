@@ -35,12 +35,12 @@ namespace CppProject
 
 	void Printer::Warning(QString text)
 	{
-		Printer::Line("[WARNING] " + text);
+		Printer::Line("[WARN] [cpp] " + text);
 	}
 
 	void Printer::Fatal(QString text)
 	{
-		Printer::Line("[FATAL ERROR] " + text);
+		Printer::Line("[ERROR] [cpp.fatal] " + text);
 		throw text;
 	}
 

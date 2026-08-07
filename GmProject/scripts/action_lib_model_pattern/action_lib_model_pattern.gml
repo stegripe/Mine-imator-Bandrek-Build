@@ -22,8 +22,9 @@ function action_lib_model_pattern(color, patterns, colors)
 		var hobj;
 		history_pop()
 		
-		if (history_amount > 0 && history[0].script = action_lib_model_pattern)
-			hobj = history[0]
+		var top = history_combine_top()
+		if (top != null && top.script = action_lib_model_pattern)
+			hobj = top
 		else
 		{
 			history_push()
@@ -37,7 +38,7 @@ function action_lib_model_pattern(color, patterns, colors)
 		hobj.new_pattern_patterns = patterns
 		hobj.new_pattern_colors = colors
 		
-		history[0] = hobj
+		history_set_top(hobj)
 	}
 	
 	with (temp_edit)

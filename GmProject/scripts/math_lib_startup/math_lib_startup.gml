@@ -18,7 +18,7 @@ function math_lib_startup(path)
 	* but you may do as you like.
 	*/
 	
-	log("External library", path)
+	log_info("startup", "External library", path)
 	globalvar lib_math_simplex1d, lib_math_simplex2d, lib_math_simplex3d, lib_math_simplex4d;
 	lib_math_simplex1d = external_define(path, "simplex1D", dll_cdecl, ty_real, 1, ty_real)
 	lib_math_simplex2d = external_define(path, "simplex2D", dll_cdecl, ty_real, 2, ty_real, ty_real)

@@ -100,10 +100,10 @@ function draw_inputbox()
 	draw_set_font(font)
 	
 	var tbxh, placeholderx, textx, texty, textvalign, texthalign;
-	tbxh = max(string_height(" "), h - 9)
 	
 	if (type = e_inputbox.LEFT || type = e_inputbox.RIGHT)
 	{
+		tbxh = max(string_height(" "), h - 9)
 		textx = xx + 8
 		texty = yy + floor(h/2) - ceil(tbxh/2)
 		texthalign = fa_left
@@ -118,11 +118,12 @@ function draw_inputbox()
 	}
 	else
 	{
+		// BIG: use line height so text is truly vertically centered (not h-9)
+		tbxh = string_height(" ")
 		textx = xx + w/2
-		texty = yy + 38
+		texty = yy + floor(h/2) - ceil(tbxh/2)
 		texthalign = fa_center
-		textvalign = fa_bottom
-		
+		textvalign = fa_top
 		placeholderx = textx
 	}
 	
@@ -146,8 +147,8 @@ function draw_inputbox()
 	{
 		if (type = e_inputbox.BIG)
 		{
-			var textwid = min(w, string_width(tbx.text + tbx.suffix));
-			update = textbox_draw(tbx, xx + w/2 - textwid/2, yy + 5, textwid, h - 9)
+			var textwid = min(w - 16, string_width(tbx.text + tbx.suffix));
+			update = textbox_draw(tbx, xx + w/2 - textwid/2, texty, textwid, tbxh)
 		}
 		else
 			update = textbox_draw(tbx, textx, texty, w - 16, tbxh, true, type = e_inputbox.RIGHT)

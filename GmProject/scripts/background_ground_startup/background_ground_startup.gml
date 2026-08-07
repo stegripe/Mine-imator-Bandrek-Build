@@ -5,7 +5,7 @@ function background_ground_startup()
 {
 	var totalsize, size, rep;
 	
-	log("Ground vbuffer init")
+	log_info("render", "Ground vbuffer init")
 	
 	totalsize = (project_render_distance div 256) * 256
 	size = totalsize / 16

@@ -11,12 +11,12 @@ function model_load(map, dir)
 			name = map[?"name"]
 		else
 		{
-			log("Could not find name for model")
+			log_warn("asset.load", "Could not find name for model")
 			return null
 		}
 		
 		if (dev_mode_debug_names && !text_exists("model" + name))
-			log("model/" + name + dev_mode_name_translation_message)
+			log_info("asset.load", "model/" + name + dev_mode_name_translation_message)
 		
 		// File
 		if (is_string(map[?"file"]))
@@ -53,7 +53,7 @@ function model_load(map, dir)
 			while (!is_undefined(curstate))
 			{
 				if (dev_mode_debug_names && !text_exists("modelstate" + curstate))
-					log("model/state/" + curstate + dev_mode_name_translation_message)
+					log_info("asset.load", "model/state/" + curstate + dev_mode_name_translation_message)
 				
 				with (new_obj(obj_model_state))
 				{
@@ -78,7 +78,7 @@ function model_load(map, dir)
 						value_pattern_type[v] = other.pattern_type
 						
 						if (dev_mode_debug_names && !text_exists("modelstatevalue" + value_name[v]))
-							log("model/state/value/" + value_name[v] + dev_mode_name_translation_message)
+							log_info("asset.load", "model/state/value/" + value_name[v] + dev_mode_name_translation_message)
 						
 						// File
 						if (!is_undefined(curvalue[?"file"]))

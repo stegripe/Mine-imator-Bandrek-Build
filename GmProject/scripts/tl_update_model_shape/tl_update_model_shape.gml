@@ -29,6 +29,10 @@ function tl_update_model_shape(clear = true)
 	if (model_part = null)
 		return 0
 	
+	// Soft coop can leave bodyparts with null/dead temp — never Obj() a stale id
+	if (temp = null || is_string(temp) || !instance_exists(temp))
+		return 0
+	
 	if (model_part.has_3d_plane)
 	{
 		// Create maps for 3D planes

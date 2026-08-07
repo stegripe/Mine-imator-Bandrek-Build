@@ -1,8 +1,11 @@
-/// action_project_render_legacy_rendering(value)
-/// @arg value
+/// action_project_render_legacy_rendering(enable)
+/// @arg enable
 
-function action_project_render_legacy_rendering(val)
+function action_project_render_legacy_rendering(enable)
 {
-	project_render_legacy_rendering = !project_render_legacy_rendering
+	if (!history_undo && !history_redo)
+		history_set_var(action_project_render_legacy_rendering, project_render_legacy_rendering, enable, 1)
+	
+	project_render_legacy_rendering = enable
 	render_samples = -1
 }

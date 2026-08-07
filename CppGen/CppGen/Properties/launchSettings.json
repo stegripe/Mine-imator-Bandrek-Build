@@ -2,18 +2,7 @@
   "profiles": {
     "CppGen": {
       "commandName": "Project",
-
-      // david
-      //"commandLineArgs": "D:\\Dev\\Projects\\Mine-imator\\GmProject D:\\Dev\\Projects\\Mine-imator\\CppProject\\Generated D:\\Dev\\Projects\\Mine-imator\\CppProject\\Asset\\Sprites D:\\Dev\\Projects\\Mine-imator\\CppProject\\Asset\\Shaders D:\\Dev\\Projects\\Mine-imator\\CppGen\\gml.json"
-
-      // Nimi
-      //"commandLineArgs": "C:\\Dev\\Mine-imator\\GmProject C:\\Dev\\Mine-imator\\CppProject\\Generated C:\\Dev\\Mine-imator\\CppProject\\Asset\\Sprites C:\\Dev\\Mine-imator\\CppProject\\Asset\\Shaders C:\\Dev\\Mine-imator\\CppGen\\gml.json"
-
-      // mbanders
-      //"commandLineArgs": "D:\\Mine-imator-2.0.2-Continuation-Build-master2\\Mine-imator-2.0.2-Continuation-Build-master\\GmProject D:\\Mine-imator-2.0.2-Continuation-Build-master2\\Mine-imator-2.0.2-Continuation-Build-master\\CppProject\\Generated D:\\Mine-imator-2.0.2-Continuation-Build-master2\\Mine-imator-2.0.2-Continuation-Build-master\\CppProject\\Asset\\Sprites D:\\Mine-imator-2.0.2-Continuation-Build-master2\\Mine-imator-2.0.2-Continuation-Build-master\\CppProject\\Asset\\Shaders D:\\Mine-imator-2.0.2-Continuation-Build-master2\\Mine-imator-2.0.2-Continuation-Build-master\\CppGen\\gml.json"
-      
-	  //YogaindoCR
-	  "commandLineArgs": "D:\\Mine-imator-2.0.2-Continuation-Build-master\\Mine-imator-2.0.2-Continuation-Build-master\\GmProject D:\\Mine-imator-2.0.2-Continuation-Build-master\\Mine-imator-2.0.2-Continuation-Build-master\\CppProject\\Generated D:\\Mine-imator-2.0.2-Continuation-Build-master\\Mine-imator-2.0.2-Continuation-Build-master\\CppProject\\Asset\\Sprites D:\\Mine-imator-2.0.2-Continuation-Build-master\\Mine-imator-2.0.2-Continuation-Build-master\\CppProject\\Asset\\Shaders D:\\Mine-imator-2.0.2-Continuation-Build-master\\Mine-imator-2.0.2-Continuation-Build-master\\CppGen\\gml.json"
+      "commandLineArgs": "C:\\Users\\mozartrafi\\Nextcloud\\Coding\\stegripe\\Mine-imator-Bandrek-Build\\GmProject C:\\Users\\mozartrafi\\Nextcloud\\Coding\\stegripe\\Mine-imator-Bandrek-Build\\CppProject\\Generated C:\\Users\\mozartrafi\\Nextcloud\\Coding\\stegripe\\Mine-imator-Bandrek-Build\\CppProject\\Asset\\Sprites C:\\Users\\mozartrafi\\Nextcloud\\Coding\\stegripe\\Mine-imator-Bandrek-Build\\CppProject\\Asset\\Shaders C:\\Users\\mozartrafi\\Nextcloud\\Coding\\stegripe\\Mine-imator-Bandrek-Build\\CppGen\\gml.json"
     }
   }
 }

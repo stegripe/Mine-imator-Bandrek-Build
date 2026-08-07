@@ -1,4 +1,4 @@
-/// draw_textfield(name, x, y, width, height, textbox, script, [placeholder, [labelpos, [error]]])
+/// draw_textfield(name, x, y, width, height, textbox, script, [placeholder, [labelpos, [error, [disabled]]]])
 /// @arg name
 /// @arg x
 /// @arg y
@@ -8,9 +8,10 @@
 /// @arg script
 /// @arg [placeholder
 /// @arg [labelpos
-/// @arg [error]]]
+/// @arg [error
+/// @arg [disabled]]]]
 
-function draw_textfield(name, xx, yy, w, h, textbox, script, placeholder = "", labelpos = "top", err = false)
+function draw_textfield(name, xx, yy, w, h, textbox, script, placeholder = "", labelpos = "top", err = false, disabled = false)
 {
 	var capwidth, fieldy;
 	
@@ -34,7 +35,7 @@ function draw_textfield(name, xx, yy, w, h, textbox, script, placeholder = "", l
 		return 0
 	}
 	
-	var update = draw_inputbox(name, xx + capwidth, fieldy, w - capwidth, h, placeholder, textbox, script, false, err)
+	var update = draw_inputbox(name, xx + capwidth, fieldy, w - capwidth, h, placeholder, textbox, script, disabled, err)
 	
 	// Use microanimation from inputbox to determine color
 	draw_set_font(font_label)
@@ -44,6 +45,11 @@ function draw_textfield(name, xx, yy, w, h, textbox, script, placeholder = "", l
 	labelcolor = merge_color(labelcolor, c_accent, microani_arr[e_microani.ACTIVE])
 	labelalpha = lerp(a_text_secondary, a_text_main, microani_arr[e_microani.HOVER])
 	labelalpha = lerp(labelalpha, a_accent, microani_arr[e_microani.ACTIVE])
+	if (disabled)
+	{
+		labelcolor = c_text_tertiary
+		labelalpha = a_text_tertiary
+	}
 	
 	if (err)
 	{

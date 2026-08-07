@@ -49,7 +49,7 @@ function nbt_read_tag_list(listtype, listlen)
 				nlisttype = buffer_read_byte()
 				if (nlisttype >= e_nbt.amount)
 				{
-					log("TAG_List error", "Invalid tag")
+					log_error("file", "TAG_List error", "Invalid tag")
 					ds_list_destroy(list)
 					return null
 				}

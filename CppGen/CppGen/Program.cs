@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -87,7 +87,7 @@ namespace CppGen
 			Strings.Add("");
 
 			// Parse sprites
-			string[] spriteDirs = Directory.GetDirectories(gmDir + @"\sprites");
+			string[] spriteDirs = Directory.GetDirectories(Path.Combine(gmDir, "sprites"));
 			foreach (string dir in spriteDirs)
 			{
 				Sprite spr = new Sprite(dir, outputSpritesDir);
@@ -100,9 +100,9 @@ namespace CppGen
 				Console.WriteLine("No sprites were updated");
 
 			// Parse shaders
-			if (Directory.Exists(gmDir + @"\shaders"))
+			if (Directory.Exists(Path.Combine(gmDir, "shaders")))
 			{
-				string[] shaderDirs = Directory.GetDirectories(gmDir + @"\shaders");
+				string[] shaderDirs = Directory.GetDirectories(Path.Combine(gmDir, "shaders"));
 				foreach (string dir in shaderDirs)
 				{
 					Shader shader = new Shader(dir, outputShadersDir);
@@ -136,11 +136,11 @@ namespace CppGen
 			timer.Start();
 
 			// Parse script GML
-			string[] scriptDirs = Directory.GetDirectories(gmDir + @"\scripts");
+			string[] scriptDirs = Directory.GetDirectories(Path.Combine(gmDir, "scripts"));
 			foreach (string dir in scriptDirs)
 			{
 				DirectoryInfo dirInfo = new DirectoryInfo(dir);
-				FileInfo gmlInfo = new FileInfo(dir + "\\" + dirInfo.Name + ".gml");
+				FileInfo gmlInfo = new FileInfo(Path.Combine(dir, dirInfo.Name + ".gml"));
 				if (!gmlInfo.Exists)
 					continue;
 
@@ -151,7 +151,7 @@ namespace CppGen
 			Console.WriteLine("Parsed GML ({0} lines) in {1}ms", GML.TotalLines, (int)timer.Elapsed.TotalMilliseconds);
 
 			// Parse objects
-			string[] objectDirs = Directory.GetDirectories(gmDir + @"\objects");
+			string[] objectDirs = Directory.GetDirectories(Path.Combine(gmDir, "objects"));
 			foreach (string dir in objectDirs)
 			{
 				Object obj = new Object(dir);
@@ -216,7 +216,6 @@ namespace CppGen
 			MergeUnknownVars = true;
 			ResolveProject();
 			timer.Stop();
-
 
 			int percResolved = (int)((1.0f - Variable.VariantVariables / (float)Variable.TotalVariables) * 100.0f);
 			Console.WriteLine("Solved {0} out of {1} variable types ({2}%) in {3}ms", Variable.TotalVariables - Variable.VariantVariables, Variable.TotalVariables, percResolved,(int)timer.Elapsed.TotalMilliseconds);
@@ -474,7 +473,8 @@ namespace CppGen
 			}
 			else
 				Console.WriteLine("Success!");
-			Console.ReadKey();
+			if (!Console.IsInputRedirected)
+				Console.ReadKey();
 		}
 
 		public static void ResolveProject()

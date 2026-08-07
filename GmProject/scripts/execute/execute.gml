@@ -5,6 +5,6 @@
 
 function execute(file, parameters, wait)
 {
-	log("execute", file, parameters, wait)
+	log_info("file", "execute", file, parameters, wait)
 	external_call(lib_execute, file, parameters, wait)
 }

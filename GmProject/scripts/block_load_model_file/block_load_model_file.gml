@@ -9,7 +9,7 @@ function block_load_model_file(fname, res = null)
 	
 	if (!file_exists_lib(fname))
 	{
-		log("Could not find model file", fname)
+		log_warn("minecraft", "Could not find model file", fname)
 		return null
 	}
 	
@@ -18,7 +18,7 @@ function block_load_model_file(fname, res = null)
 	map = json_load(fname, typemap)
 	if (!ds_map_valid(map))
 	{
-		log("Could not parse model file", fname)
+		log_warn("minecraft", "Could not parse model file", fname)
 		ds_map_destroy(typemap)
 		return null
 	}

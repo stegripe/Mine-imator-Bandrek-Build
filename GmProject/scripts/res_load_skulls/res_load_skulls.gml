@@ -91,7 +91,7 @@ function res_load_skulls()
 			else
 			{
 				block_skull_res_map[?block_skull_texture_name] = null
-				log("Failed to download texture", block_skull_texture_name)
+				log_error("res.load", "Failed to download texture", block_skull_texture_name)
 				block_skull_fail_count++
 			}
 					

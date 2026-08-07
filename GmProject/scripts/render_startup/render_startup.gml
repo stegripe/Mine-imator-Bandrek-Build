@@ -38,10 +38,10 @@ function render_startup()
 	globalvar render_pass_surf;
 	
 	// Extraku
-	globalvar render_low_drawing, render_low_Before, render_shadow_blur_kernel, render_post_kernel, render_low_check_main,
+	globalvar render_low_drawing, render_low_Before, render_low_Before_tlcount, render_shadow_blur_kernel, render_post_kernel, render_low_check_main,
 			  render_use_camera_depth;
 	
-	log("Render init")
+	log_info("render", "Render init")
 	
 	gpu_set_blendenable(true)
 	gpu_set_blendmode(bm_normal)
@@ -64,6 +64,7 @@ function render_startup()
 	
 	render_low_drawing = 0
 	render_low_Before = 0
+	render_low_Before_tlcount = -1
 	render_light_tl = null
 	render_light_specular_strength = 0
 	render_light_shadow = false
@@ -212,7 +213,6 @@ function render_startup()
 	globalvar testing;
 	testing = 1
 	
-	
 	// Render samples
 	render_samples = 0
 	render_sample_current = 0
@@ -290,6 +290,6 @@ function render_startup()
 		project_save_render()
 		project_save_done()
 	
-		log("Saved default render settings", render_default_file)
+		log_info("render", "Saved default render settings", render_default_file)
 	}
 }
